@@ -1,0 +1,4 @@
+
+fss-proxy:
+    audience: ${TOKEN_X_AUDIENCE:dummyAudience}
+    tokenx_metadata_url: ${TOKENX_METADATA_URL:dummyUrl}
