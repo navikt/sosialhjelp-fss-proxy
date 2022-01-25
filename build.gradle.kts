@@ -25,6 +25,8 @@ dependencies {
 	implementation("com.auth0:java-jwt:3.18.2")
 	implementation("com.auth0:jwks-rsa:0.20.0")
 
+	testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+	testImplementation("io.mockk:mockk:1.12.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 }
