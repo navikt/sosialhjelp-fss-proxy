@@ -40,7 +40,7 @@ jobs:
       uses: "nais/deploy/actions/deploy@v1"
       env:
         "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "dev-gcp"
+        "CLUSTER": "dev-fss"
         "RESOURCE": ".nais/nais.yaml"
         "VARS": ".nais/dev.yaml"
 #  "deployAppToProd":
@@ -53,7 +53,7 @@ jobs:
 #      uses: "nais/deploy/actions/deploy@v1"
 #      env:
 #        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-#        "CLUSTER": "prod-gcp"
+#        "CLUSTER": "prod-fss"
 #        "RESOURCE": ".nais/nais.yaml"
 #        "VARS": ".nais/prod.yaml"
   "deployAlertsToDev":
@@ -66,7 +66,7 @@ jobs:
       uses: "nais/deploy/actions/deploy@v1"
       env:
         "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "dev-gcp"
+        "CLUSTER": "dev-fss"
         "RESOURCE": ".nais/alerts-dev.yaml"
         "VARS": ".nais/dev.yaml"
 #  "deployAlertsToProd":
@@ -79,6 +79,6 @@ jobs:
 #      uses: "nais/deploy/actions/deploy@v1"
 #      env:
 #        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-#        "CLUSTER": "prod-gcp"
+#        "CLUSTER": "prod-fss"
 #        "RESOURCE": ".nais/alerts-prod.yaml"
 #        "VARS": ".nais/prod.yaml"
