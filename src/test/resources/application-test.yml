@@ -1,0 +1,3 @@
+fss-proxy:
+  audience: dummyAudience
+  tokenx_metadata_url: https://wellknown/

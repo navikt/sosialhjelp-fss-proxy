@@ -33,7 +33,7 @@ class ProxyJwkProviderImpl(
 @Component
 @Profile("test")
 class TestProxyJwkProvider(
-    @Value("\${fssProxy.bruker_metadata_url}") private val jwkProviderUrl: String,
+    @Value("\${fss-proxy.tokenx_metadata_url}") private val jwkProviderUrl: String,
 ) : ProxyJwkProvider() {
     init {
         // Henter ikke ned well known konfigurasjon.
