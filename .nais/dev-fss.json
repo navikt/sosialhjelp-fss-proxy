@@ -1,0 +1,6 @@
+{
+  "ingress": [
+    "https://sosialhjelp-fss-proxy.dev.intern.nav.no"
+  ],
+  "tokenXEnabled": true
+}
