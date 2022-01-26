@@ -3,6 +3,8 @@
     "https://sosialhjelp-fss-proxy.intern.nav.no"
   ],
   "tokenXEnabled": true,
+  "innsynAppName": "sosialhjelp-innsyn-api",
+  "innsynClusterName": "prod-gcp",
   "env": {
     "NORG_URL": "https://norg2.intern.nav.no/norg2/api/v1"
   }

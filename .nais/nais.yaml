@@ -38,6 +38,11 @@ spec:
   {{/each}}
   tokenx:
     enabled: {{tokenXEnabled}}
+  accessPolicy:
+    inbound:
+      rules:
+        - application: {{innsynAppName}}
+          cluster: {{innsynClusterName}}
   env:
   {{#each env}}
     - name: {{@key}}
