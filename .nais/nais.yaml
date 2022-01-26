@@ -4,9 +4,7 @@ metadata:
   name: "sosialhjelp-fss-proxy"
   namespace: "teamdigisos"
   labels:
-    "team": "teamdigisos"
-    "start.nais.io/created-by": "me"
-    "start.nais.io/creationTimestamp": "2021-12-14T17:09:33.074768"
+    team: "teamdigisos"
 spec:
   image: {{image}}
   liveness:
