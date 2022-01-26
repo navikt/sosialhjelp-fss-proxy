@@ -2,3 +2,11 @@
 fss-proxy:
     audience: ${TOKEN_X_CLIENT_ID:dummyAudience}
     tokenx_metadata_url: ${TOKEN_X_WELL_KNOWN_URL:dummyUrl}
+
+# Prometheus
+management:
+    endpoints:
+        web:
+            base-path: "/internal"
+            exposure:
+                include: info, health, metrics, prometheus
