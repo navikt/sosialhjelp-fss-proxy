@@ -33,8 +33,8 @@ spec:
       cpu: "10m"
       memory: "256Mi"
   ingresses:
-  {{#each ingresses as |url|}}
-    - {{url}}
+  {{#each ingress}}
+     - "{{this}}"
   {{/each}}
   tokenx:
     enabled: {{tokenXEnabled}}
