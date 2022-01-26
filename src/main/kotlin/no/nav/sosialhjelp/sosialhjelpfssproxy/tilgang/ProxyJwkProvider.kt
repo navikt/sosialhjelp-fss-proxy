@@ -16,7 +16,7 @@ open class ProxyJwkProvider {
 @Component
 @Profile("!test")
 class ProxyJwkProviderImpl(
-    @Value("\${fss-proxy.tokenx_metadata_url}") private val metadata_url: String,
+    @Value("\${fss-proxy.tokendings_url}") private val metadata_url: String,
 ) : ProxyJwkProvider() {
     init {
         val downloadedWellKnown = downloadWellKnown(metadata_url)
@@ -33,7 +33,7 @@ class ProxyJwkProviderImpl(
 @Component
 @Profile("test")
 class TestProxyJwkProvider(
-    @Value("\${fss-proxy.tokenx_metadata_url}") private val jwkProviderUrl: String,
+    @Value("\${fss-proxy.tokendings_url}") private val jwkProviderUrl: String,
 ) : ProxyJwkProvider() {
     init {
         // Henter ikke ned well known konfigurasjon.

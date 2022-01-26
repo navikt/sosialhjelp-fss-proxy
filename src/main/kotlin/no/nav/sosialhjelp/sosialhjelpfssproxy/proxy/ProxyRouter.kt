@@ -4,7 +4,7 @@ import no.nav.sosialhjelp.sosialhjelpfssproxy.configuration.FrontendErrorMessage
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.ServiceException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangForbudtException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangsException
-import no.nav.sosialhjelp.sosialhjelpfssproxy.internal.SelftestHandler
+import no.nav.sosialhjelp.sosialhjelpfssproxy.norg.NorgRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.tilgang.ProxyJwkProvider
 import no.nav.sosialhjelp.sosialhjelpfssproxy.tilgang.decodeAndVerifyJWT
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.logger
@@ -18,8 +18,8 @@ import org.springframework.web.reactive.function.server.coRouter
 @Component
 class ProxyRouter(
     private val jwkProvider: ProxyJwkProvider,
-    @Value("\${fss-proxy.audience}") private val audience: String,
-    private val selftestHandler: SelftestHandler
+    @Value("\${fss-proxy.tokendings_client_id}") private val audience: String,
+    private val norgRouter: NorgRouter
 ) {
     companion object {
         private val log by logger()
@@ -27,8 +27,7 @@ class ProxyRouter(
 
     fun proxyRoutes() = coRouter {
         path("/proxy").nest {
-            GET("/isAlive", selftestHandler::isAlive)
-//            POST("/brukerstatus", dialogStatusHandler::hentStatus)
+            add(norgRouter.norgRoutes())
             filter { serverRequest, next ->
                 try {
                     decodeAndVerifyJWT(

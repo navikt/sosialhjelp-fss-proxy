@@ -1,3 +1,4 @@
 fss-proxy:
-  audience: dummyAudience
-  tokenx_metadata_url: https://wellknown/
+  tokendings_client_id: dummyAudience
+  tokendings_url: https://wellknown/
+  norg_url: https://norg/

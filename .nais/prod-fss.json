@@ -2,5 +2,8 @@
   "ingress": [
     "https://sosialhjelp-fss-proxy.intern.nav.no"
   ],
-  "tokenXEnabled": true
+  "tokenXEnabled": true,
+  "env": {
+    "NORG_URL": "https://norg2.intern.nav.no/norg2/api/v1"
+  }
 }

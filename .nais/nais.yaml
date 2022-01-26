@@ -38,3 +38,8 @@ spec:
   {{/each}}
   tokenx:
     enabled: {{tokenXEnabled}}
+  env:
+  {{#each env}}
+    - name: {{@key}}
+      value: "{{this}}"
+  {{/each}}

@@ -1,7 +1,8 @@
 
 fss-proxy:
-    audience: ${TOKEN_X_CLIENT_ID:dummyAudience}
-    tokenx_metadata_url: ${TOKEN_X_WELL_KNOWN_URL:dummyUrl}
+    tokendings_client_id: ${TOKEN_X_CLIENT_ID}
+    tokendings_url: ${TOKEN_X_WELL_KNOWN_URL}
+    norg_url: ${NORG_URL}
 
 # Prometheus
 management:
