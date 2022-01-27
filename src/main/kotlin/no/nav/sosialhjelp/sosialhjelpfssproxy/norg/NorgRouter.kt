@@ -11,6 +11,7 @@ class NorgRouter(
     fun norgRoutes() = coRouter {
         path("/norg").nest {
             GET("/enhet/{enhetsnr}", norgHandler::getEnhet)
+            GET("/enhet/navkontor/{geografiskTilknytning}", norgHandler::getEnhetForGeografiskTilknytning)
             GET("/kodeverk/EnhetstyperNorg", norgHandler::ping)
         }
     }

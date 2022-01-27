@@ -36,6 +36,25 @@ class NorgClient(
         return navEnhet!!
     }
 
+    fun hentNavEnhetForGeografiskTilknytning(geografiskTilknytning: String): NavEnhet {
+        log.debug("Forsøker å hente NAV-enhet for geografiskTilknytning=$geografiskTilknytning fra NORG2")
+
+        val navEnhet: NavEnhet? = norgWebClient.get()
+            .uri("/enhet/navkontor/{geografiskTilknytning}", geografiskTilknytning)
+            .headers { it.addAll(headers()) }
+            .retrieve()
+            .bodyToMono<NavEnhet>()
+            .onErrorMap(WebClientResponseException::class.java) { e ->
+                log.warn("Noe feilet ved kall mot NORG2 ${e.statusCode}", e)
+                NorgException(e.message, e)
+            }
+            .block()
+
+        log.info("Hentet NAV-enhet for geografiskTilknytning=$geografiskTilknytning fra NORG2")
+
+        return navEnhet!!
+    }
+
     // samme kall som selftest i soknad-api
     fun ping() {
         norgWebClient.get()

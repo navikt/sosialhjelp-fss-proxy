@@ -17,6 +17,12 @@ class NorgHandler(
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValueAndAwait(navEnhet)
     }
 
+    suspend fun getEnhetForGeografiskTilknytning(request: ServerRequest): ServerResponse {
+        val geografiskTilknytning = request.pathVariable("geografiskTilknytning")
+        val navEnhet = norgClient.hentNavEnhetForGeografiskTilknytning(geografiskTilknytning)
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValueAndAwait(navEnhet)
+    }
+
     suspend fun ping(request: ServerRequest): ServerResponse {
         norgClient.ping()
         return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN).bodyValueAndAwait("OK")
