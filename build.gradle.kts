@@ -5,6 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.6.10"
 	kotlin("plugin.spring") version "1.6.10"
+	id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
 group = "no.nav.sosialhjelp"
@@ -13,6 +14,10 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
 	mavenCentral()
+}
+
+ktlint {
+	this.version.set("0.43.1")
 }
 
 dependencies {
