@@ -1,13 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Versions {
-	val micrometer = "1.8.2"
-	val javaJwt = "3.18.2"
-	val jwksRsa = "0.20.0"
-
-	// test
-	val junit = "5.8.2"
-	val mockk = "1.12.2"
+	const val springBoot = "2.6.2" // Husk plugin også
 }
 
 plugins {
@@ -26,21 +20,23 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("io.micrometer:micrometer-registry-prometheus:${Versions.micrometer}")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-	implementation("com.auth0:java-jwt:${Versions.javaJwt}")
-	implementation("com.auth0:jwks-rsa:${Versions.jwksRsa}")
+	implementation("org.springframework.boot:spring-boot-starter-webflux:${Versions.springBoot}")
+	implementation("org.springframework.boot:spring-boot-starter-actuator:${Versions.springBoot}")
 
-	testImplementation("org.junit.jupiter:junit-jupiter:${Versions.junit}")
-	testImplementation("io.mockk:mockk:${Versions.mockk}")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
+	implementation("io.micrometer:micrometer-registry-prometheus:1.8.2")
+
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")
+
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.5.2")
+
+	// oauth
+	implementation("com.auth0:java-jwt:3.18.2")
+	implementation("com.auth0:jwks-rsa:0.20.0")
+
+	// Test
+	testImplementation("org.springframework.boot:spring-boot-starter-test:${Versions.springBoot}")
+	testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+	testImplementation("io.mockk:mockk:1.12.2")
 }
 
 tasks.withType<KotlinCompile> {
