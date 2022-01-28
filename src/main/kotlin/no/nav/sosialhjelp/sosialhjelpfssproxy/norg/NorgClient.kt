@@ -8,6 +8,7 @@ import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.WebClientResponseException
+import org.springframework.web.reactive.function.client.awaitBody
 import org.springframework.web.reactive.function.client.bodyToMono
 
 @Component
@@ -37,17 +38,12 @@ class NorgClient(
     }
 
     // samme kall som selftest i soknad-api
-    fun ping() {
+    suspend fun ping() {
         norgWebClient.get()
             .uri("/kodeverk/EnhetstyperNorg")
             .headers { it.addAll(headers()) }
             .retrieve()
-            .bodyToMono<String>()
-            .onErrorMap(WebClientResponseException::class.java) { e ->
-                log.warn("Ping - feilet mot NORG2 ${e.statusCode}", e)
-                NorgException(e.message, e)
-            }
-            .block()
+            .awaitBody<String>()
     }
 
     private fun headers(): HttpHeaders {
