@@ -1,21 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-object Versions {
-    val micrometer = "1.8.2"
-    val javaJwt = "3.18.2"
-    val jwksRsa = "0.20.0"
-
-    // test
-    val junit = "5.8.2"
-    val mockk = "1.12.2"
-}
-
 plugins {
-    id("org.springframework.boot") version "2.6.2"
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    kotlin("jvm") version "1.6.10"
-    kotlin("plugin.spring") version "1.6.10"
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+    id("org.springframework.boot") version SpringBoot.version
+    kotlin("jvm") version Kotlin.version
+    kotlin("plugin.spring") version Kotlin.version
+    id("org.jlleitschuh.gradle.ktlint") version KtlintPlugin.version
+    id("com.github.ben-manes.versions") version VersionsPlugin.version
 }
 
 group = "no.nav.sosialhjelp"
@@ -27,25 +17,21 @@ repositories {
 }
 
 ktlint {
-    this.version.set("0.43.1")
+    this.version.set(Ktlint.version)
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("io.micrometer:micrometer-registry-prometheus:${Versions.micrometer}")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-    implementation("com.auth0:java-jwt:${Versions.javaJwt}")
-    implementation("com.auth0:jwks-rsa:${Versions.jwksRsa}")
+    implementation(kotlin("reflect"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter:${Versions.junit}")
-    testImplementation("io.mockk:mockk:${Versions.mockk}")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.projectreactor:reactor-test")
+    implementation(SpringBoot.webflux)
+    implementation(SpringBoot.actuator)
+    implementation(Micrometer.registryPrometheus)
+    implementation(Auth0.javaJwt)
+    implementation(Auth0.jwksRsa)
+
+    testImplementation(Junit.jupiter)
+    testImplementation(Mockk.mockk)
+    testImplementation(SpringBoot.test)
 }
 
 tasks.withType<KotlinCompile> {
