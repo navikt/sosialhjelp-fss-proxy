@@ -11,10 +11,11 @@ object Versions {
 }
 
 plugins {
-	id("org.springframework.boot") version "2.6.2"
-	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.6.10"
-	kotlin("plugin.spring") version "1.6.10"
+    id("org.springframework.boot") version "2.6.2"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    kotlin("jvm") version "1.6.10"
+    kotlin("plugin.spring") version "1.6.10"
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
 group = "no.nav.sosialhjelp"
@@ -22,7 +23,11 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+}
+
+ktlint {
+    this.version.set("0.43.1")
 }
 
 dependencies {
@@ -44,16 +49,16 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "17"
-	}
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "17"
+    }
 }
 
 tasks.withType<Test> {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
-	this.archiveFileName.set("app.jar")
+    this.archiveFileName.set("app.jar")
 }

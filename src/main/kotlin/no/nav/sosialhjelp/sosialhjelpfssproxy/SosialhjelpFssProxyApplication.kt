@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class SosialhjelpFssProxyApplication
 
 fun main(args: Array<String>) {
-	runApplication<SosialhjelpFssProxyApplication>(*args)
+    runApplication<SosialhjelpFssProxyApplication>(*args)
 }

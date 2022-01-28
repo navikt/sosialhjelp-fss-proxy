@@ -20,6 +20,11 @@ jobs:
     - uses: "actions/setup-java@v1"
       with:
         "java-version": "17"
+    - name: Run lint
+      run: ./gradlew ktlintCheck
+      env:
+        ORG_GRADLE_PROJECT_githubUser: x-access-token
+        ORG_GRADLE_PROJECT_githubPassword: ${{ secrets.GITHUB_TOKEN }}
     - name: "compile and run tests"
       run: "./gradlew build"
     - name: "Login to GitHub Docker Registry"

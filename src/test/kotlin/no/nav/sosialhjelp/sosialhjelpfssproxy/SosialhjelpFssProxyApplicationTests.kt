@@ -9,8 +9,8 @@ import org.springframework.test.context.ActiveProfiles
 @ActiveProfiles(profiles = ["test"])
 internal class SosialhjelpFssProxyApplicationTests {
 
-	@Test
-	fun contextLoads() {
-		assertThat("OK").isEqualTo("OK")
-	}
+    @Test
+    fun contextLoads() {
+        assertThat("OK").isEqualTo("OK")
+    }
 }

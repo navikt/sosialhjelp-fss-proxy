@@ -53,4 +53,3 @@ fun decodeAndVerifyJWT(
     }
     return verifiedToken
 }
-
