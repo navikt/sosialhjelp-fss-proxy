@@ -27,3 +27,8 @@ Man kan endre IntelliJ autoformateringskonfigurasjon for det aktuelle prosjektet
 
 Installere pre-commit hook lokalt i aktuelt repo, som enten sjekker eller formatterer koden:\
 `./gradlew addKtlintCheckGitPreCommitHook` eller `./gradlew addKtlintFormatGitPreCommitHook`
+
+### Versions plugin
+[gradle-versions-plugin](https://github.com/ben-manes/gradle-versions-plugin) kan brukes for å sjekke utdaterte avhengigheter.
+
+`./gradlew dependencyUpdates`, evt `./gradlew dependencyUpdates -Drevision=release`
