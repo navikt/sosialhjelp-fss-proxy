@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Versions {
-	val micrometer = "1.8.2"
-	val javaJwt = "3.18.2"
-	val jwksRsa = "0.20.0"
+    val micrometer = "1.8.2"
+    val javaJwt = "3.18.2"
+    val jwksRsa = "0.20.0"
 
-	// test
-	val junit = "5.8.2"
-	val mockk = "1.12.2"
+    // test
+    val junit = "5.8.2"
+    val mockk = "1.12.2"
 }
 
 plugins {
@@ -31,21 +31,21 @@ ktlint {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("io.micrometer:micrometer-registry-prometheus:${Versions.micrometer}")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-	implementation("com.auth0:java-jwt:${Versions.javaJwt}")
-	implementation("com.auth0:jwks-rsa:${Versions.jwksRsa}")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("io.micrometer:micrometer-registry-prometheus:${Versions.micrometer}")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("com.auth0:java-jwt:${Versions.javaJwt}")
+    implementation("com.auth0:jwks-rsa:${Versions.jwksRsa}")
 
-	testImplementation("org.junit.jupiter:junit-jupiter:${Versions.junit}")
-	testImplementation("io.mockk:mockk:${Versions.mockk}")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
+    testImplementation("org.junit.jupiter:junit-jupiter:${Versions.junit}")
+    testImplementation("io.mockk:mockk:${Versions.mockk}")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.projectreactor:reactor-test")
 }
 
 tasks.withType<KotlinCompile> {
