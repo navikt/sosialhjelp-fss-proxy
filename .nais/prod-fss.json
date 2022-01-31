@@ -7,7 +7,8 @@
     "sosialhjelp-innsyn-api"
   ],
   "gcpCluster": "prod-gcp",
-  "outboundRulesSbsApplications": [
+  "hasInboundSbsApps": "true",
+  "inboundRulesSbsApplications": [
     "sosialhjelp-soknad-api"
   ],
   "sbsCluster": "prod-sbs",

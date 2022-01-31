@@ -8,6 +8,7 @@
     "sosialhjelp-innsyn-api-q"
   ],
   "gcpCluster": "dev-gcp",
+  "hasInboundSbsApps": "true",
   "inboundRulesSbsApplications": [
     "sosialhjelp-soknad-api",
     "sosialhjelp-soknad-api-intern"

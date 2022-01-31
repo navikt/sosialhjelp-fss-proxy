@@ -47,14 +47,12 @@ spec:
       {{else}}
         []
       {{/each}}
-        - application: {{innsynAppName}}
-          cluster: {{innsynClusterName}}
+      {{#if hasInboundSbsApps}}
       {{#each inboundRulesSbsApplications}}
         - application: "{{this}}"
           cluster: {{sbsCluster}}
-      {{else}}
-        []
       {{/each}}
+      {{/if}}
   env:
   {{#each env}}
     - name: {{@key}}
