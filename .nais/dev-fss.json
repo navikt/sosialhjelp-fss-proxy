@@ -4,8 +4,16 @@
     "https://sosialhjelp-fss-proxy.dev-fss-pub.nais.io"
   ],
   "tokenXEnabled": true,
-  "innsynAppName": "sosialhjelp-innsyn-api-q",
-  "innsynClusterName": "dev-gcp",
+  "inboundRulesGcpApplications": [
+    "sosialhjelp-innsyn-api-q"
+  ],
+  "gcpCluster": "dev-gcp",
+  "hasInboundSbsApps": "true",
+  "inboundRulesSbsApplications": [
+    "sosialhjelp-soknad-api",
+    "sosialhjelp-soknad-api-intern"
+  ],
+  "sbsCluster": "dev-sbs",
   "env": {
     "NORG_URL": "https://norg2.dev.intern.nav.no/norg2/api/v1"
   }

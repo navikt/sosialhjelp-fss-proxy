@@ -41,8 +41,18 @@ spec:
   accessPolicy:
     inbound:
       rules:
-        - application: {{innsynAppName}}
-          cluster: {{innsynClusterName}}
+      {{#each inboundRulesGcpApplications}}
+        - application: "{{this}}"
+          cluster: {{gcpCluster}}
+      {{else}}
+        []
+      {{/each}}
+      {{#if hasInboundSbsApps}}
+      {{#each inboundRulesSbsApplications}}
+        - application: "{{this}}"
+          cluster: {{sbsCluster}}
+      {{/each}}
+      {{/if}}
   env:
   {{#each env}}
     - name: {{@key}}

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.WebClientResponseException
 import org.springframework.web.reactive.function.client.awaitBody
-import org.springframework.web.reactive.function.client.bodyToMono
 
 @Component
 class NorgClient(
@@ -18,23 +17,36 @@ class NorgClient(
 ) {
     private val norgWebClient = webClientBuilder.baseUrl(norgUrl).build()
 
-    fun hentNavEnhet(enhetsnr: String): NavEnhet {
+    suspend fun hentNavEnhet(enhetsnr: String): NavEnhet {
         log.debug("Forsøker å hente NAV-enhet $enhetsnr fra NORG2")
 
-        val navEnhet: NavEnhet? = norgWebClient.get()
-            .uri("/enhet/{enhetsnr}", enhetsnr)
-            .headers { it.addAll(headers()) }
-            .retrieve()
-            .bodyToMono<NavEnhet>()
-            .onErrorMap(WebClientResponseException::class.java) { e ->
-                log.warn("Noe feilet ved kall mot NORG2 ${e.statusCode}", e)
-                NorgException(e.message, e)
-            }
-            .block()
+        try {
+            return norgWebClient.get()
+                .uri("/enhet/{enhetsnr}", enhetsnr)
+                .headers { it.addAll(headers()) }
+                .retrieve()
+                .awaitBody<NavEnhet>()
+                .also { log.info("Hentet NAV-enhet $enhetsnr fra NORG2") }
+        } catch (e: WebClientResponseException) {
+            log.warn("Noe feilet ved kall mot NORG2 ${e.statusCode}", e)
+            throw NorgException(e.message, e)
+        }
+    }
 
-        log.info("Hentet NAV-enhet $enhetsnr fra NORG2")
+    suspend fun hentNavEnhetForGeografiskTilknytning(geografiskTilknytning: String): NavEnhet {
+        log.debug("Forsøker å hente NAV-enhet for geografiskTilknytning=$geografiskTilknytning fra NORG2")
 
-        return navEnhet!!
+        try {
+            return norgWebClient.get()
+                .uri("/enhet/navkontor/{geografiskTilknytning}", geografiskTilknytning)
+                .headers { it.addAll(headers()) }
+                .retrieve()
+                .awaitBody<NavEnhet>()
+                .also { log.info("Hentet NAV-enhet for geografiskTilknytning=$geografiskTilknytning fra NORG2") }
+        } catch (e: WebClientResponseException) {
+            log.warn("Noe feilet ved kall mot NORG2 ${e.statusCode}", e)
+            throw NorgException(e.message, e)
+        }
     }
 
     // samme kall som selftest i soknad-api
