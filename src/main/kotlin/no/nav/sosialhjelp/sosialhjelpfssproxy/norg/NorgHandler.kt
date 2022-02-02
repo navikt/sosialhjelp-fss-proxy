@@ -22,9 +22,4 @@ class NorgHandler(
         val navEnhet = norgClient.hentNavEnhetForGeografiskTilknytning(geografiskTilknytning)
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValueAndAwait(navEnhet)
     }
-
-    suspend fun ping(request: ServerRequest): ServerResponse {
-        norgClient.ping()
-        return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN).bodyValueAndAwait("OK")
-    }
 }

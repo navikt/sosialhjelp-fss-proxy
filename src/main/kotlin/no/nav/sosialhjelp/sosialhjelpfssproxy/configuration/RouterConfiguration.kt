@@ -1,6 +1,7 @@
 package no.nav.sosialhjelp.sosialhjelpfssproxy.configuration
 
 import no.nav.sosialhjelp.sosialhjelpfssproxy.internal.SelftestRouter
+import no.nav.sosialhjelp.sosialhjelpfssproxy.ping.PingRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.proxy.ProxyRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.logger
 import org.springframework.context.annotation.Bean
@@ -14,6 +15,7 @@ import org.springframework.web.reactive.function.server.coRouter
 @Configuration
 class RouterConfiguration(
     private val selftestRouter: SelftestRouter,
+    private val pingRouter: PingRouter,
     private val proxyRouter: ProxyRouter
 ) {
     companion object {
@@ -23,6 +25,7 @@ class RouterConfiguration(
     @Bean
     fun routerConfig() = coRouter {
         add(selftestRouter.statusRoutes())
+        add(pingRouter.statusRoutes())
         add(proxyRouter.proxyRoutes())
         path("/**", logAndReturn404())
         onError<Throwable> { error, _ ->
