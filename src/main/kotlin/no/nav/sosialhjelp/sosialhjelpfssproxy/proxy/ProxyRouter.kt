@@ -4,6 +4,7 @@ import no.nav.sosialhjelp.sosialhjelpfssproxy.configuration.FrontendErrorMessage
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.ServiceException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangForbudtException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangsException
+import no.nav.sosialhjelp.sosialhjelpfssproxy.norg.NorgHandler
 import no.nav.sosialhjelp.sosialhjelpfssproxy.norg.NorgRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.tilgang.ProxyJwkProvider
 import no.nav.sosialhjelp.sosialhjelpfssproxy.tilgang.decodeAndVerifyJWT
@@ -19,7 +20,8 @@ import org.springframework.web.reactive.function.server.coRouter
 class ProxyRouter(
     private val jwkProvider: ProxyJwkProvider,
     @Value("\${fss-proxy.tokendings_client_id}") private val audience: String,
-    private val norgRouter: NorgRouter
+    private val norgRouter: NorgRouter,
+    private val norgHandler: NorgHandler
 ) {
     companion object {
         private val log by logger()
@@ -43,6 +45,7 @@ class ProxyRouter(
                 }
             }
         }
+        OPTIONS("/norg/ping", norgHandler::ping)
         onError<Throwable> { error, _ ->
             when (error) {
                 is ServiceException -> {
