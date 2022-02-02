@@ -45,7 +45,6 @@ class ProxyRouter(
                 }
             }
         }
-        OPTIONS("/norg/ping", norgHandler::ping)
         onError<Throwable> { error, _ ->
             when (error) {
                 is ServiceException -> {
