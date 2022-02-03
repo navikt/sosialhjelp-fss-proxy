@@ -23,6 +23,9 @@ Interne henvendelser kan sendes via Slack i kanalen #team_digisos.
 `GET /proxy/norg/enhet/{enhetsnr}`\
 `GET /proxy/norg/enhet/navkontor/{geografiskTilknytning}`
 
+### Kodeverk
+`GET /proxy/kodeverk/{kodeverksnavn}`
+
 ### Ping
 `OPTIONS /ping`
 
