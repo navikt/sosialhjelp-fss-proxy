@@ -16,6 +16,16 @@ Interne henvendelser kan sendes via Slack i kanalen #team_digisos.
 ### Krav
 * JDK 17
 
+
+## Endepunkter
+
+### NORG
+`GET /proxy/norg/enhet/{enhetsnr}`\
+`GET /proxy/norg/enhet/navkontor/{geografiskTilknytning}`
+
+### Ping
+`OPTIONS /ping`
+
 ## Annet
 
 ### Ktlint
