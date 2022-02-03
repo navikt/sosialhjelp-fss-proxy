@@ -15,6 +15,7 @@
   ],
   "sbsCluster": "dev-sbs",
   "env": {
-    "NORG_URL": "https://norg2.dev.intern.nav.no/norg2/api/v1"
+    "NORG_URL": "https://norg2.dev.intern.nav.no/norg2/api/v1",
+    "KODEVERK_URL": "https://kodeverk.dev.adeo.no/api/v1/kodeverk"
   }
 }
