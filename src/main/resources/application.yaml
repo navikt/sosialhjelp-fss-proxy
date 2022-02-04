@@ -4,6 +4,7 @@ fss-proxy:
     tokendings_url: ${TOKEN_X_WELL_KNOWN_URL}
     norg_url: ${NORG_URL}
     kodeverk_url: ${KODEVERK_URL}
+    ereg_url: ${EREG_URL}
 
 # Prometheus
 management:

@@ -1,6 +1,7 @@
 package no.nav.sosialhjelp.sosialhjelpfssproxy.proxy
 
 import no.nav.sosialhjelp.sosialhjelpfssproxy.configuration.FrontendErrorMessage
+import no.nav.sosialhjelp.sosialhjelpfssproxy.ereg.EregRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.ServiceException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangForbudtException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangsException
@@ -21,7 +22,8 @@ class ProxyRouter(
     private val jwkProvider: ProxyJwkProvider,
     @Value("\${fss-proxy.tokendings_client_id}") private val audience: String,
     private val norgRouter: NorgRouter,
-    private val kodeverkRouter: KodeverkRouter
+    private val kodeverkRouter: KodeverkRouter,
+    private val eregRouter: EregRouter
 ) {
     companion object {
         private val log by logger()
@@ -31,6 +33,7 @@ class ProxyRouter(
         path("/proxy").nest {
             add(norgRouter.norgRoutes())
             add(kodeverkRouter.kodeverkRoutes())
+            add(eregRouter.eregRoutes())
             filter { serverRequest, next ->
                 try {
                     decodeAndVerifyJWT(
