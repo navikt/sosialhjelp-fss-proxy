@@ -1,14 +1,16 @@
 package no.nav.sosialhjelp.sosialhjelpfssproxy.norg
 
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.NorgException
+import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.HEADER_CALL_ID
+import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.getCallId
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.logger
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.WebClientResponseException
 import org.springframework.web.reactive.function.client.awaitBody
+import org.springframework.web.reactive.function.server.ServerRequest
 
 @Component
 class NorgClient(
@@ -17,13 +19,14 @@ class NorgClient(
 ) {
     private val norgWebClient = webClientBuilder.baseUrl(norgUrl).build()
 
-    suspend fun hentNavEnhet(enhetsnr: String): NavEnhet {
+    suspend fun hentNavEnhet(enhetsnr: String, request: ServerRequest): NavEnhet {
         log.debug("Forsøker å hente NAV-enhet $enhetsnr fra NORG2")
 
         try {
             return norgWebClient.get()
                 .uri("/enhet/{enhetsnr}", enhetsnr)
-                .headers { it.addAll(headers()) }
+                .accept(MediaType.APPLICATION_JSON)
+                .header(HEADER_CALL_ID, getCallId(request))
                 .retrieve()
                 .awaitBody<NavEnhet>()
                 .also { log.info("Hentet NAV-enhet $enhetsnr fra NORG2") }
@@ -33,13 +36,14 @@ class NorgClient(
         }
     }
 
-    suspend fun hentNavEnhetForGeografiskTilknytning(geografiskTilknytning: String): NavEnhet {
+    suspend fun hentNavEnhetForGeografiskTilknytning(geografiskTilknytning: String, request: ServerRequest): NavEnhet {
         log.debug("Forsøker å hente NAV-enhet for geografiskTilknytning=$geografiskTilknytning fra NORG2")
 
         try {
             return norgWebClient.get()
                 .uri("/enhet/navkontor/{geografiskTilknytning}", geografiskTilknytning)
-                .headers { it.addAll(headers()) }
+                .accept(MediaType.APPLICATION_JSON)
+                .header(HEADER_CALL_ID, getCallId(request))
                 .retrieve()
                 .awaitBody<NavEnhet>()
                 .also { log.info("Hentet NAV-enhet for geografiskTilknytning=$geografiskTilknytning fra NORG2") }
@@ -53,16 +57,10 @@ class NorgClient(
     suspend fun ping() {
         norgWebClient.get()
             .uri("/kodeverk/EnhetstyperNorg")
-            .headers { it.addAll(headers()) }
+            .accept(MediaType.APPLICATION_JSON)
+            .header(HEADER_CALL_ID, getCallId())
             .retrieve()
             .awaitBody<String>()
-    }
-
-    private fun headers(): HttpHeaders {
-        val headers = HttpHeaders()
-        headers.accept = listOf(MediaType.APPLICATION_JSON)
-//        headers.set(HEADER_CALL_ID, MDCUtils.get(MDCUtils.CALL_ID))
-        return headers
     }
 
     companion object {
