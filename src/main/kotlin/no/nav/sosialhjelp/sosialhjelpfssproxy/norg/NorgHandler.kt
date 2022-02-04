@@ -13,13 +13,13 @@ class NorgHandler(
 
     suspend fun getEnhet(request: ServerRequest): ServerResponse {
         val enhetsnr = request.pathVariable("enhetsnr")
-        val navEnhet = norgClient.hentNavEnhet(enhetsnr)
+        val navEnhet = norgClient.hentNavEnhet(enhetsnr, request)
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValueAndAwait(navEnhet)
     }
 
     suspend fun getEnhetForGeografiskTilknytning(request: ServerRequest): ServerResponse {
         val geografiskTilknytning = request.pathVariable("geografiskTilknytning")
-        val navEnhet = norgClient.hentNavEnhetForGeografiskTilknytning(geografiskTilknytning)
+        val navEnhet = norgClient.hentNavEnhetForGeografiskTilknytning(geografiskTilknytning, request)
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValueAndAwait(navEnhet)
     }
 }
