@@ -14,7 +14,7 @@ class KodeverkHandler(
 
     suspend fun getKodeverk(request: ServerRequest): ServerResponse {
         val kodeverksnavn = request.pathVariable("kodeverksnavn")
-        val kodeverkDto = kodeverkClient.getKodeverk(kodeverksnavn)
+        val kodeverkDto = kodeverkClient.getKodeverk(kodeverksnavn, request)
         return kodeverkDto?.let { ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValueAndAwait(it) }
             ?: ServerResponse.notFound().buildAndAwait()
     }
