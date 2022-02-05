@@ -12,6 +12,7 @@ class SelftestRouter(
         path("/internal").nest {
             GET("/isAlive", selftestHandler::isAlive)
             GET("/isReady", selftestHandler::isReady)
+            GET("/selftest", selftestHandler::getSelftest)
         }
     }
 }

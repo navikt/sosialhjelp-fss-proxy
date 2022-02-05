@@ -1,5 +1,6 @@
 package no.nav.sosialhjelp.sosialhjelpfssproxy.norg
 
+import no.nav.sosialhjelp.sosialhjelpfssproxy.common.Client
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.NorgException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.HEADER_CALL_ID
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.getCallId
@@ -16,7 +17,7 @@ import org.springframework.web.reactive.function.server.ServerRequest
 class NorgClient(
     webClientBuilder: WebClient.Builder,
     @Value("\${fss-proxy.norg_url}") private val norgUrl: String
-) {
+) : Client {
     private val norgWebClient = webClientBuilder.baseUrl(norgUrl).build()
 
     suspend fun hentNavEnhet(enhetsnr: String, request: ServerRequest): NavEnhet {
@@ -54,7 +55,7 @@ class NorgClient(
     }
 
     // samme kall som selftest i soknad-api
-    suspend fun ping() {
+    override suspend fun ping() {
         norgWebClient.get()
             .uri("/kodeverk/EnhetstyperNorg")
             .accept(MediaType.APPLICATION_JSON)
