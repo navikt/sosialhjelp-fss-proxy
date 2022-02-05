@@ -1,7 +1,9 @@
 package no.nav.sosialhjelp.sosialhjelpfssproxy.ereg
 
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.HEADER_CALL_ID
+import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.HEADER_CONSUMER_ID
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.getCallId
+import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.getConsumerId
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
@@ -21,7 +23,7 @@ class EregClient(
             .uri { it.path("/v1/organisasjon/{orgnr}/noekkelinfo").build(orgnr) }
             .accept(MediaType.APPLICATION_JSON)
             .header(HEADER_CALL_ID, getCallId(request))
-//            .header(HEADER_CONSUMER_ID, getConsumerId(request))
+            .header(HEADER_CONSUMER_ID, getConsumerId(request))
             .retrieve()
             .awaitBodyOrNull()
     }
@@ -31,7 +33,7 @@ class EregClient(
             .uri("/v1/organisasjon/990983666/noekkelinfo")
             .accept(MediaType.APPLICATION_JSON)
             .header(HEADER_CALL_ID, getCallId())
-//            .header(HEADER_CONSUMER_ID, getConsumerId())
+            .header(HEADER_CONSUMER_ID, getConsumerId())
             .retrieve()
             .awaitBodyOrNull<OrganisasjonNoekkelinfoDto>()
     }
