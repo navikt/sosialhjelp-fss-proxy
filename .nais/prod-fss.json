@@ -14,6 +14,7 @@
   "sbsCluster": "prod-sbs",
   "env": {
     "NORG_URL": "https://norg2.intern.nav.no/norg2/api/v1",
-    "KODEVERK_URL": "https://kodeverk.intern.nav.no/api/v1/kodeverk"
+    "KODEVERK_URL": "https://kodeverk.intern.nav.no/api/v1/kodeverk",
+    "EREG_URL": "https://modapp.adeo.no/ereg/api"
   }
 }

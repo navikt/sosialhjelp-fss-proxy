@@ -6,4 +6,5 @@ fss-proxy:
     tokendings_url: ${TOKEN_X_WELL_KNOWN_URL:http://${mock-alt-api-host}:8989/sosialhjelp/mock-alt-api/well-known/selvbetjening${mock-alt-api-wellknown-queryparam}}
     norg_url: ${NORG_URL:http://${mock-alt-api-host}:8989/sosialhjelp/mock-alt-api/norg_endpoint_url/}
     kodeverk_url: ${KODEVERK_URL:http://${mock-alt-api-host}:8989/sosialhjelp/mock-alt-api/kodeverk/api/}
+    ereg_url: ${EREG_URL:http://${mock-alt-api-host}:8989/sosialhjelp/mock-alt-api/ereg_endpoint_url}
 
