@@ -1,5 +1,6 @@
 package no.nav.sosialhjelp.sosialhjelpfssproxy.ereg
 
+import no.nav.sosialhjelp.sosialhjelpfssproxy.common.Client
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.HEADER_CALL_ID
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.HEADER_CONSUMER_ID
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.HeaderUtils.getCallId
@@ -15,7 +16,7 @@ import org.springframework.web.reactive.function.server.ServerRequest
 class EregClient(
     webClientBuilder: WebClient.Builder,
     @Value("\${fss-proxy.ereg_url}") private val eregUrl: String
-) {
+) : Client {
     private val eregWebClient = webClientBuilder.baseUrl(eregUrl).build()
 
     suspend fun getOrganisasjon(orgnr: String, request: ServerRequest): OrganisasjonNoekkelinfoDto? {
@@ -28,7 +29,7 @@ class EregClient(
             .awaitBodyOrNull()
     }
 
-    suspend fun ping() {
+    override suspend fun ping() {
         eregWebClient.get()
             .uri("/v1/organisasjon/990983666/noekkelinfo")
             .accept(MediaType.APPLICATION_JSON)
