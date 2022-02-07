@@ -4,7 +4,7 @@ metadata:
   name: sosialhjelp-fss-proxy
   namespace: teamdigisos
   labels:
-    "team": teamdigisos
+    team: teamdigisos
 spec:
   receivers:
     slack:
