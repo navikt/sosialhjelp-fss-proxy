@@ -1,10 +1,10 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: "sosialhjelp-fss-proxy"
-  namespace: "teamdigisos"
+  name: sosialhjelp-fss-proxy
+  namespace: teamdigisos
   labels:
-    team: "teamdigisos"
+    team: teamdigisos
 spec:
   image: {{image}}
   port: 8080
@@ -27,11 +27,11 @@ spec:
     path: "/internal/prometheus"
   resources:
     limits:
-      cpu: "400m"
-      memory: "256Mi"
+      cpu: 400m
+      memory: 256Mi
     requests:
-      cpu: "1m"
-      memory: "256Mi"
+      cpu: 1m
+      memory: 256Mi
   ingresses:
   {{#each ingress}}
      - "{{this}}"
