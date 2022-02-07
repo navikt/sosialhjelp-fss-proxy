@@ -1,89 +1,89 @@
-name: "Build and deploy sosialhjelp-fss-proxy"
+name: Build and deploy sosialhjelp-fss-proxy
 on:
   push:
     branches:
-    - "main"
+    - main
 env:
-  "IMAGE": "ghcr.io/${{ github.repository }}:${{ github.sha }}"
+  IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
 jobs:
-  "build":
-    name: "build"
-    runs-on: "ubuntu-18.04"
+  build:
+    name: build
+    runs-on: ubuntu-18.04
     steps:
-    - uses: "actions/checkout@v2"
-    - uses: "gradle/wrapper-validation-action@v1"
-    - uses: "actions/cache@v2"
+    - uses: actions/checkout@v2
+    - uses: gradle/wrapper-validation-action@v1
+    - uses: actions/cache@v2
       with:
-        "path": "~/.gradle/caches"
-        "key": "${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}"
-        "restore-keys": "${{ runner.os }}-gradle-"
-    - uses: "actions/setup-java@v1"
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+        restore-keys: ${{ runner.os }}-gradle-
+    - uses: actions/setup-java@v1
       with:
-        "java-version": "17"
+        java-version: 17
     - name: Run lint
       run: ./gradlew ktlintCheck
       env:
         ORG_GRADLE_PROJECT_githubUser: x-access-token
         ORG_GRADLE_PROJECT_githubPassword: ${{ secrets.GITHUB_TOKEN }}
-    - name: "compile and run tests"
-      run: "./gradlew build"
-    - name: "Login to GitHub Docker Registry"
-      uses: "docker/login-action@v1"
+    - name: compile and run tests
+      run: ./gradlew build
+    - name: Login to GitHub Docker Registry
+      uses: docker/login-action@v1
       with:
-        "registry": "ghcr.io"
-        "username": "${{ github.actor }}"
-        "password": "${{ secrets.GITHUB_TOKEN }}"
-    - name: "Build and push the Docker image"
-      run: "docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}"
-  "deployAppToDev":
-    name: "Deploy app to dev"
-    needs: "build"
-    runs-on: "ubuntu-18.04"
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build and push the Docker image
+      run: docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}
+  deployAppToDev:
+    name: Deploy app to dev
+    needs: build
+    runs-on: ubuntu-18.04
     steps:
-    - uses: "actions/checkout@v2"
-    - name: "Deploy to DEV"
-      uses: "nais/deploy/actions/deploy@v1"
+    - uses: actions/checkout@v2
+    - name: Deploy to DEV
+      uses: nais/deploy/actions/deploy@v1
       env:
-        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "dev-fss"
-        "RESOURCE": ".nais/nais.yaml"
-        "VARS": ".nais/dev-fss.json"
-#  "deployAppToProd":
-#    name: "Deploy app to prod"
-#    needs: "deployAppToDev"
-#    runs-on: "ubuntu-18.04"
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: dev-fss
+        RESOURCE: .nais/nais.yaml
+        VARS: .nais/dev-fss.json
+#  deployAppToProd:
+#    name: Deploy app to prod
+#    needs: deployAppToDev
+#    runs-on: ubuntu-18.04
 #    steps:
-#    - uses: "actions/checkout@v2"
-#    - name: "Deploy to PROD"
-#      uses: "nais/deploy/actions/deploy@v1"
+#    - uses: actions/checkout@v2
+#    - name: Deploy to PROD
+#      uses: nais/deploy/actions/deploy@v1
 #      env:
-#        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-#        "CLUSTER": "prod-fss"
-#        "RESOURCE": ".nais/nais.yaml"
-#        "VARS": ".nais/prod-fss.json"
-  "deployAlertsToDev":
-    name: "Deploy alerts to dev"
-    needs: "build"
-    runs-on: "ubuntu-18.04"
+#        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+#        CLUSTER: prod-fss
+#        RESOURCE: .nais/nais.yaml
+#        VARS: .nais/prod-fss.json
+  deployAlertsToDev:
+    name: Deploy alerts to dev
+    needs: build
+    runs-on: ubuntu-18.04
     steps:
-    - uses: "actions/checkout@v2"
-    - name: "Deploy alerts to DEV"
-      uses: "nais/deploy/actions/deploy@v1"
+    - uses: actions/checkout@v2
+    - name: Deploy alerts to DEV
+      uses: nais/deploy/actions/deploy@v1
       env:
-        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "dev-fss"
-        "RESOURCE": ".nais/alerts-dev.yaml"
-        "VARS": ".nais/dev-fss.json"
-#  "deployAlertsToProd":
-#    name: "Deploy alerts to prod"
-#    needs: "build"
-#    runs-on: "ubuntu-18.04"
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: dev-fss
+        RESOURCE: .nais/alerts-dev.yaml
+        VARS: .nais/dev-fss.json
+#  deployAlertsToProd:
+#    name: Deploy alerts to prod
+#    needs: build
+#    runs-on: ubuntu-18.04
 #    steps:
-#    - uses: "actions/checkout@v2"
-#    - name: "Deploy alerts to PROD"
-#      uses: "nais/deploy/actions/deploy@v1"
+#    - uses: actions/checkout@v2
+#    - name: Deploy alerts to PROD
+#      uses: nais/deploy/actions/deploy@v1
 #      env:
-#        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-#        "CLUSTER": "prod-fss"
-#        "RESOURCE": ".nais/alerts-prod.yaml"
-#        "VARS": ".nais/dev-fss.json"
+#        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+#        CLUSTER: prod-fss
+#        RESOURCE: .nais/alerts-prod.yaml
+#        VARS: .nais/dev-fss.json

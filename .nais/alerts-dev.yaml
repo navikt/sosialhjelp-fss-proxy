@@ -1,14 +1,14 @@
 apiVersion: "nais.io/v1"
 kind: "Alert"
 metadata:
-  name: "sosialhjelp-fss-proxy"
-  namespace: "teamdigisos"
+  name: sosialhjelp-fss-proxy
+  namespace: teamdigisos
   labels:
-    "team": "teamdigisos"
+    team: teamdigisos
 spec:
   receivers:
     slack:
-      channel: "teamdigisos-alerts-dev"
+      channel: digisos-alerts-dev
       prependText: "<!here> | "
   alerts:
   - alert: "sosialhjelp-fss-proxy er nede"
