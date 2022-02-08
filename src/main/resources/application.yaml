@@ -1,15 +1,18 @@
+spring:
+  main:
+    banner-mode: off
 
 fss-proxy:
-    tokendings_client_id: ${TOKEN_X_CLIENT_ID}
-    tokendings_url: ${TOKEN_X_WELL_KNOWN_URL}
-    norg_url: ${NORG_URL}
-    kodeverk_url: ${KODEVERK_URL}
-    ereg_url: ${EREG_URL}
+  tokendings_client_id: ${TOKEN_X_CLIENT_ID}
+  tokendings_url: ${TOKEN_X_WELL_KNOWN_URL}
+  norg_url: ${NORG_URL}
+  kodeverk_url: ${KODEVERK_URL}
+  ereg_url: ${EREG_URL}
 
 # Prometheus
 management:
-    endpoints:
-        web:
-            base-path: "/internal"
-            exposure:
-                include: info, health, metrics, prometheus
+  endpoints:
+    web:
+      base-path: "/internal"
+      exposure:
+        include: info, health, metrics, prometheus
