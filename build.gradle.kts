@@ -4,6 +4,7 @@ object Versions {
     val micrometer = "1.8.2"
     val javaJwt = "3.18.2"
     val jwksRsa = "0.20.0"
+    val logstash = "7.0.1"
 
     // test
     val junit = "5.8.2"
@@ -41,6 +42,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("com.auth0:java-jwt:${Versions.javaJwt}")
     implementation("com.auth0:jwks-rsa:${Versions.jwksRsa}")
+    implementation("net.logstash.logback:logstash-logback-encoder:${Versions.logstash}")
 
     testImplementation("org.junit.jupiter:junit-jupiter:${Versions.junit}")
     testImplementation("io.mockk:mockk:${Versions.mockk}")
