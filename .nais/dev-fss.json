@@ -19,5 +19,7 @@
     "NORG_URL": "https://norg2.dev.intern.nav.no/norg2/api/v1",
     "KODEVERK_URL": "https://kodeverk.dev.adeo.no/api/v1/kodeverk",
     "EREG_URL": "https://modapp-q1.adeo.no/ereg/api"
-  }
+  },
+  "minReplicas": "1",
+  "maxReplicas": "2"
 }
