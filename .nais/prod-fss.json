@@ -1,6 +1,7 @@
 {
   "ingress": [
-    "https://sosialhjelp-fss-proxy.intern.nav.no"
+    "https://sosialhjelp-fss-proxy.intern.nav.no",
+    "https://sosialhjelp-fss-proxy.prod-fss-pub.nais.io"
   ],
   "tokenXEnabled": true,
   "inboundRulesGcpApplications": [
