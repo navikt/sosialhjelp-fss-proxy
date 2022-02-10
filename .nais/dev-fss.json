@@ -11,7 +11,9 @@
   "hasInboundSbsApps": "true",
   "inboundRulesSbsApplications": [
     "sosialhjelp-soknad-api",
-    "sosialhjelp-soknad-api-intern"
+    "sosialhjelp-soknad-api-intern",
+    "sosialhjelp-innsyn-api",
+    "sosialhjelp-innsyn-api-intern"
   ],
   "sbsCluster": "dev-sbs",
   "env": {

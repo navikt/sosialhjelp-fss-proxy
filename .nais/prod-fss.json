@@ -10,7 +10,8 @@
   "gcpCluster": "prod-gcp",
   "hasInboundSbsApps": "true",
   "inboundRulesSbsApplications": [
-    "sosialhjelp-soknad-api"
+    "sosialhjelp-soknad-api",
+    "sosialhjelp-innsyn-api"
   ],
   "sbsCluster": "prod-sbs",
   "env": {
