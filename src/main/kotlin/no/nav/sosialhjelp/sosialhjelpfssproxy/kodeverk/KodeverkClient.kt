@@ -17,7 +17,10 @@ class KodeverkClient(
     @Value("\${fss-proxy.kodeverk_url}") private val kodeverkUrl: String
 ) : Client {
 
-    private val norgWebClient = webClientBuilder.baseUrl(kodeverkUrl).build()
+    private val norgWebClient = webClientBuilder
+        .baseUrl(kodeverkUrl)
+        .codecs { it.defaultCodecs().maxInMemorySize(16 * 1024 * 1024) }
+        .build()
 
     suspend fun getKodeverk(kodeverksnavn: String, request: ServerRequest): KodeverkDto? {
         return norgWebClient.get()
