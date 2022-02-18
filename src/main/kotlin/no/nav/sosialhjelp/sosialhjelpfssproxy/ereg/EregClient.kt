@@ -21,7 +21,7 @@ class EregClient(
 
     suspend fun getOrganisasjon(orgnr: String, request: ServerRequest): OrganisasjonNoekkelinfoDto? {
         return eregWebClient.get()
-            .uri { it.path("/v1/organisasjon/{orgnr}/noekkelinfo").build(orgnr) }
+            .uri("/v1/organisasjon/{orgnr}/noekkelinfo", orgnr)
             .accept(MediaType.APPLICATION_JSON)
             .header(HEADER_CALL_ID, getCallId(request))
             .header(HEADER_CONSUMER_ID, getConsumerId(request))
