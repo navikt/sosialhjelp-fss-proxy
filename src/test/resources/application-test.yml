@@ -5,3 +5,5 @@ fss-proxy:
   norg_url: https://norg/
   kodeverk_url: https://kodeverk/
   ereg_url: https://ereg/
+  krr_url: https://krr/
+  krr_audience: dummyAudience

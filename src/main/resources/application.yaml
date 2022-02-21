@@ -9,6 +9,8 @@ fss-proxy:
   norg_url: ${NORG_URL}
   kodeverk_url: ${KODEVERK_URL}
   ereg_url: ${EREG_URL}
+  krr_url: ${KRR_URL}
+  krr_audience: ${KRR_AUDIENCE}
 
 # Prometheus
 management:
