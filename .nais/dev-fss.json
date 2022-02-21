@@ -3,7 +3,6 @@
     "https://sosialhjelp-fss-proxy.dev.intern.nav.no",
     "https://sosialhjelp-fss-proxy.dev-fss-pub.nais.io"
   ],
-  "tokenXEnabled": true,
   "inboundRulesGcpApplications": [
     "sosialhjelp-innsyn-api-q"
   ],

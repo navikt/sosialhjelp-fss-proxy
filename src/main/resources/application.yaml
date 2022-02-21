@@ -5,6 +5,7 @@ spring:
 fss-proxy:
   tokendings_client_id: ${TOKEN_X_CLIENT_ID}
   tokendings_url: ${TOKEN_X_WELL_KNOWN_URL}
+  tokendings_private_jwk: ${TOKEN_X_PRIVATE_JWK}
   norg_url: ${NORG_URL}
   kodeverk_url: ${KODEVERK_URL}
   ereg_url: ${EREG_URL}

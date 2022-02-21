@@ -13,3 +13,10 @@ private fun <T : Any> unwrapCompanionClass(ofClass: Class<T>): Class<*> {
         ofClass.enclosingClass.kotlin.companionObject?.java == ofClass
     } ?: ofClass
 }
+
+const val NAIS_CLUSTER_NAME = "NAIS_CLUSTER_NAME"
+
+fun isRunningInProd(): Boolean {
+    val clusterName = System.getenv(NAIS_CLUSTER_NAME)
+    return clusterName != null && clusterName.contains("prod")
+}

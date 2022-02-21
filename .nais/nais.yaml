@@ -36,8 +36,11 @@ spec:
   {{#each ingress}}
      - "{{this}}"
   {{/each}}
+  azure:
+    application:
+      enabled: true
   tokenx:
-    enabled: {{tokenXEnabled}}
+    enabled: true
   accessPolicy:
     inbound:
       rules:
