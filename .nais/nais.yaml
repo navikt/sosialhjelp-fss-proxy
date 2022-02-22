@@ -56,11 +56,6 @@ spec:
           cluster: {{sbsCluster}}
       {{/each}}
       {{/if}}
-    outbound:
-      rules:
-        - application: digdir-krr-proxy
-          namespace: team-rocket
-          cluster: {{gcpCluster}}
   env:
   {{#each env}}
     - name: {{@key}}
