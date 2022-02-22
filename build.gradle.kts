@@ -5,6 +5,7 @@ object Versions {
     const val javaJwt = "3.18.2"
     const val jwksRsa = "0.20.0"
     const val logstash = "7.0.1"
+    const val nimbusJoseJwt = "9.19"
 
     // test
     const val junit = "5.8.2"
@@ -42,6 +43,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("com.auth0:java-jwt:${Versions.javaJwt}")
     implementation("com.auth0:jwks-rsa:${Versions.jwksRsa}")
+    implementation("com.nimbusds:nimbus-jose-jwt:${Versions.nimbusJoseJwt}")
     implementation("net.logstash.logback:logstash-logback-encoder:${Versions.logstash}")
 
     testImplementation("org.junit.jupiter:junit-jupiter:${Versions.junit}")

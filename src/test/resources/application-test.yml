@@ -1,6 +1,9 @@
 fss-proxy:
   tokendings_client_id: dummyAudience
   tokendings_url: https://wellknown/
+  tokendings_private_jwk: generateRSA
   norg_url: https://norg/
   kodeverk_url: https://kodeverk/
   ereg_url: https://ereg/
+  krr_url: https://krr/
+  krr_audience: dummyAudience

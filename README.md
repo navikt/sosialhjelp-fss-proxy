@@ -19,12 +19,19 @@ Interne henvendelser kan sendes via Slack i kanalen #team_digisos.
 
 ## Endepunkter
 
+### Ereg
+`GET /proxy/ereg/organisasjon/{orgnr}`\
+
 ### NORG
 `GET /proxy/norg/enhet/{enhetsnr}`\
 `GET /proxy/norg/enhet/navkontor/{geografiskTilknytning}`
 
 ### Kodeverk
 `GET /proxy/kodeverk/{kodeverksnavn}`
+
+### Krr
+Midlertidig proxy for sosialhjelp-soknad-api i sbs-clustre.
+`GET /proxy/krr/rest/v1/person`
 
 ### Ping
 `OPTIONS /ping`

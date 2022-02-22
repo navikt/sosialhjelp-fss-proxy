@@ -3,7 +3,6 @@
     "https://sosialhjelp-fss-proxy.intern.nav.no",
     "https://sosialhjelp-fss-proxy.prod-fss-pub.nais.io"
   ],
-  "tokenXEnabled": true,
   "inboundRulesGcpApplications": [
     "sosialhjelp-innsyn-api"
   ],
@@ -18,7 +17,9 @@
     "SPRING_PROFILES_ACTIVE": "log-kibana",
     "NORG_URL": "https://norg2.intern.nav.no/norg2/api/v1",
     "KODEVERK_URL": "https://kodeverk.intern.nav.no/api/v1/kodeverk",
-    "EREG_URL": "https://modapp.adeo.no/ereg/api"
+    "EREG_URL": "https://modapp.adeo.no/ereg/api",
+    "KRR_URL": "https://digdir-krr-proxy.intern.nav.no",
+    "KRR_AUDIENCE":"prod-gcp:team-rocket:digdir-krr-proxy"
   },
   "minReplicas": "2",
   "maxReplicas": "4"
