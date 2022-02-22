@@ -44,7 +44,7 @@ class KrrClient(
             .awaitBodyOrNull<Any>()
     }
 
-    private suspend fun tokenXtoken(request: ServerRequest) {
-        tokendingsService.exchangeToken(request, krrAudience)
+    private suspend fun tokenXtoken(request: ServerRequest): String {
+        return tokendingsService.exchangeToken(request, krrAudience)
     }
 }

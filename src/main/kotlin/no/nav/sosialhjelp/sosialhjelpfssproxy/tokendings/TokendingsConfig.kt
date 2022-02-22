@@ -24,14 +24,12 @@ class TokendingsConfig(
     @Profile("!test")
     @Bean
     fun tokendingsClient(): TokendingsClient {
-        log.info("creating tokendingsClient")
         return TokendingsClient(tokendingsWebClient, wellKnown)
     }
 
     @Profile("test")
     @Bean
     fun tokendingsClientTest(): TokendingsClient {
-        log.info("creating tokendingsClient test")
         return TokendingsClient(
             tokendingsWebClient,
             WellKnown("iss-localhost", "authorizationEndpoint", "tokenEndpoint", tokendingsUrl)
