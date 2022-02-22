@@ -31,7 +31,6 @@ class TokendingsService(
     }
 
     suspend fun exchangeToken(request: ServerRequest, audience: String): String {
-        log.info("exchanging token for audience: $audience")
         val token = getTokenFromServerRequest(request)
         val jwt = createSignedAssertion(clientId, tokendingsClient.audience, privateRsaKey)
         return try {
