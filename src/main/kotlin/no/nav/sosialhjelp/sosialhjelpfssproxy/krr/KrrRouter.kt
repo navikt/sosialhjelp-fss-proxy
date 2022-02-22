@@ -10,7 +10,7 @@ class KrrRouter(
 
     fun krrRoutes() = coRouter {
         path("/krr").nest {
-            GET("/person", krrHandler::getDigitalKontaktinformasjon)
+            GET("/rest/v1/person", krrHandler::getDigitalKontaktinformasjon)
         }
     }
 }
