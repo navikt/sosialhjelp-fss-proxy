@@ -6,6 +6,7 @@ import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.ServiceException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangForbudtException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangsException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.kodeverk.KodeverkRouter
+import no.nav.sosialhjelp.sosialhjelpfssproxy.krr.KrrRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.norg.NorgRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.tilgang.TilgangskontrollService
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.logger
@@ -20,7 +21,8 @@ class ProxyRouter(
     private val tilgangskontrollService: TilgangskontrollService,
     private val norgRouter: NorgRouter,
     private val kodeverkRouter: KodeverkRouter,
-    private val eregRouter: EregRouter
+    private val eregRouter: EregRouter,
+    private val krrRouter: KrrRouter
 ) {
     companion object {
         private val log by logger()
@@ -31,6 +33,7 @@ class ProxyRouter(
             add(norgRouter.norgRoutes())
             add(kodeverkRouter.kodeverkRoutes())
             add(eregRouter.eregRoutes())
+            add(krrRouter.krrRoutes())
             filter { serverRequest, next ->
                 try {
                     tilgangskontrollService.verifyToken(serverRequest)
