@@ -44,20 +44,6 @@ jobs:
           RESOURCE: .nais/nais.yaml
           VARS: .nais/dev-fss.json
 
-  deployAlertsToDev:
-    name: Deploy alerts to dev
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Deploy alerts to PROD
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-fss
-          RESOURCE: .nais/alerts-dev.yaml
-          VARS: .nais/dev-fss.json
-
   deployAppToProd:
     name: Deploy app to prod
     needs: deployAppToDev
@@ -70,18 +56,4 @@ jobs:
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
         CLUSTER: prod-fss
         RESOURCE: .nais/nais.yaml
-        VARS: .nais/prod-fss.json
-
-  deployAlertsToProd:
-    name: Deploy alerts to prod
-    needs: deployAlertsToDev
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Deploy alerts to PROD
-      uses: nais/deploy/actions/deploy@v1
-      env:
-        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: prod-fss
-        RESOURCE: .nais/alerts-prod.yaml
         VARS: .nais/prod-fss.json
