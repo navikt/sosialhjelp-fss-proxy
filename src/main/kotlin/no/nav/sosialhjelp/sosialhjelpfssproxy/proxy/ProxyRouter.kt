@@ -1,5 +1,6 @@
 package no.nav.sosialhjelp.sosialhjelpfssproxy.proxy
 
+import no.nav.sosialhjelp.sosialhjelpfssproxy.aareg.AaregRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.configuration.FrontendErrorMessage
 import no.nav.sosialhjelp.sosialhjelpfssproxy.ereg.EregRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.ServiceException
@@ -22,7 +23,8 @@ class ProxyRouter(
     private val norgRouter: NorgRouter,
     private val kodeverkRouter: KodeverkRouter,
     private val eregRouter: EregRouter,
-    private val krrRouter: KrrRouter
+    private val krrRouter: KrrRouter,
+    private val aaregRouter: AaregRouter,
 ) {
     companion object {
         private val log by logger()
@@ -34,6 +36,7 @@ class ProxyRouter(
             add(kodeverkRouter.kodeverkRoutes())
             add(eregRouter.eregRoutes())
             add(krrRouter.krrRoutes())
+            add(aaregRouter.aaregRoutes())
             filter { serverRequest, next ->
                 try {
                     tilgangskontrollService.verifyToken(serverRequest)

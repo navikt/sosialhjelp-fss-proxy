@@ -19,7 +19,9 @@
     "KODEVERK_URL": "https://kodeverk.intern.nav.no/api/v1/kodeverk",
     "EREG_URL": "https://ereg-services.intern.nav.no/api",
     "KRR_URL": "https://digdir-krr-proxy.intern.nav.no",
-    "KRR_AUDIENCE":"prod-gcp:team-rocket:digdir-krr-proxy"
+    "KRR_AUDIENCE":"prod-gcp:team-rocket:digdir-krr-proxy",
+    "AAREG_URL": "https://aareg-services.intern.nav.no/api",
+    "AAREG_AUDIENCE": "prod-fss:arbeidsforhold:aareg-services"
   },
   "minReplicas": "2",
   "maxReplicas": "4"
