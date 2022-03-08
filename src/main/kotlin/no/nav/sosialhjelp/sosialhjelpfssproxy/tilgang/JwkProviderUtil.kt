@@ -3,6 +3,7 @@ package no.nav.sosialhjelp.sosialhjelpfssproxy.tilgang
 import com.auth0.jwk.JwkProviderBuilder
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangsException
 import org.springframework.web.reactive.function.client.WebClient
+import org.springframework.web.reactive.function.client.bodyToMono
 import java.net.URL
 import java.util.concurrent.TimeUnit
 
@@ -11,7 +12,7 @@ fun downloadWellKnown(url: String): WellKnown =
         .get()
         .uri(url)
         .retrieve()
-        .bodyToMono(WellKnown::class.java)
+        .bodyToMono<WellKnown>()
         .block()
         ?: throw TilgangsException("Feiler under henting av well-known konfigurasjon fra $url")
 
