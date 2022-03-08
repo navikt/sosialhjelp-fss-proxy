@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Versions {
-    const val micrometer = "1.8.2"
-    const val javaJwt = "3.18.2"
-    const val jwksRsa = "0.20.0"
+    const val micrometer = "1.8.3"
+    const val javaJwt = "3.18.3"
+    const val jwksRsa = "0.20.2"
     const val logstash = "7.0.1"
-    const val nimbusJoseJwt = "9.19"
+    const val nimbusJoseJwt = "9.20"
 
     // test
     const val junit = "5.8.2"
@@ -13,8 +13,7 @@ object Versions {
 }
 
 plugins {
-    id("org.springframework.boot") version "2.6.3"
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    id("org.springframework.boot") version "2.6.4"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
