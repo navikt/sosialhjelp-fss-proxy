@@ -1,6 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Versions {
+    const val springboot = "2.6.4"
+    const val kotlin = "1.6.10"
+    const val coroutines = "1.6.0"
     const val micrometer = "1.8.3"
     const val javaJwt = "3.18.3"
     const val jwksRsa = "0.20.2"
@@ -32,14 +35,13 @@ ktlint {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation(kotlin("stdlib"))
+    implementation(kotlin("reflect"))
+
+    implementation("org.springframework.boot:spring-boot-starter-webflux:${Versions.springboot}")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:${Versions.springboot}")
     implementation("io.micrometer:micrometer-registry-prometheus:${Versions.micrometer}")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:${Versions.coroutines}")
     implementation("com.auth0:java-jwt:${Versions.javaJwt}")
     implementation("com.auth0:jwks-rsa:${Versions.jwksRsa}")
     implementation("com.nimbusds:nimbus-jose-jwt:${Versions.nimbusJoseJwt}")
@@ -47,8 +49,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter:${Versions.junit}")
     testImplementation("io.mockk:mockk:${Versions.mockk}")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.projectreactor:reactor-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${Versions.springboot}")
 }
 
 tasks.withType<KotlinCompile> {
