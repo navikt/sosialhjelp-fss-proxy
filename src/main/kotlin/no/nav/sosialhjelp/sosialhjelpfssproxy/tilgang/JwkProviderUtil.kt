@@ -11,7 +11,7 @@ fun downloadWellKnown(url: String): WellKnown =
     WebClient.create()
         .get()
         .uri(url)
-        .accept(MediaType.APPLICATION_JSON)
+        .accept(MediaType.APPLICATION_JSON_UTF8)
         .retrieve()
         .bodyToMono(WellKnown::class.java)
         .block()
