@@ -2,6 +2,7 @@ package no.nav.sosialhjelp.sosialhjelpfssproxy.tilgang
 
 import com.auth0.jwk.JwkProviderBuilder
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangsException
+import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.client.WebClient
 import java.net.URL
 import java.util.concurrent.TimeUnit
@@ -10,6 +11,7 @@ fun downloadWellKnown(url: String): WellKnown =
     WebClient.create()
         .get()
         .uri(url)
+        .accept(MediaType.APPLICATION_JSON)
         .retrieve()
         .bodyToMono(WellKnown::class.java)
         .block()
