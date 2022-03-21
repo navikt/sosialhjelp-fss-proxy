@@ -23,7 +23,7 @@
     "KRR_URL": "https://digdir-krr-proxy.dev.intern.nav.no",
     "KRR_AUDIENCE":"dev-gcp:team-rocket:digdir-krr-proxy",
     "AAREG_URL": "https://aareg-services-q1.dev.intern.nav.no/api",
-    "AAREG_AUDIENCE": "dev-fss:arbeidsforhold:aareg-services-q1"
+    "AAREG_AUDIENCE": "dev-fss:arbeidsforhold:aareg-services-nais-q1"
   },
   "minReplicas": "1",
   "maxReplicas": "2"

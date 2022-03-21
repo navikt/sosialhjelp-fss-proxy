@@ -21,7 +21,7 @@
     "KRR_URL": "https://digdir-krr-proxy.intern.nav.no",
     "KRR_AUDIENCE":"prod-gcp:team-rocket:digdir-krr-proxy",
     "AAREG_URL": "https://aareg-services.intern.nav.no/api",
-    "AAREG_AUDIENCE": "prod-fss:arbeidsforhold:aareg-services"
+    "AAREG_AUDIENCE": "prod-fss:arbeidsforhold:aareg-services-nais"
   },
   "minReplicas": "2",
   "maxReplicas": "4"
