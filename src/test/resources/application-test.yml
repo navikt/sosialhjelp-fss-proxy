@@ -7,3 +7,5 @@ fss-proxy:
   ereg_url: https://ereg/
   krr_url: https://krr/
   krr_audience: dummyAudience
+  aareg_url: http://aareg/
+  aareg_audience: aaregAudience

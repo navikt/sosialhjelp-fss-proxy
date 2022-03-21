@@ -33,6 +33,10 @@ Interne henvendelser kan sendes via Slack i kanalen #team_digisos.
 Midlertidig proxy for sosialhjelp-soknad-api i sbs-clustre.
 `GET /proxy/krr/rest/v1/person`
 
+### Aareg
+Midlertidig proxy for sosialhjelp-soknad-api i sbs-clustre.
+`GET /proxy/aareg/v1/arbeidstaker/arbeidsforhold`
+
 ### Ping
 `OPTIONS /ping`
 

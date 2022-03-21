@@ -11,6 +11,8 @@ fss-proxy:
   ereg_url: ${EREG_URL}
   krr_url: ${KRR_URL}
   krr_audience: ${KRR_AUDIENCE}
+  aareg_url: ${AAREG_URL}
+  aareg_audience: ${AAREG_AUDIENCE}
 
 # Prometheus
 management:
