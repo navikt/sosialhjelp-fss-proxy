@@ -4,7 +4,9 @@
     "https://sosialhjelp-fss-proxy.dev-fss-pub.nais.io"
   ],
   "inboundRulesGcpApplications": [
-    "sosialhjelp-innsyn-api-q"
+    "sosialhjelp-innsyn-api-q",
+    "sosialhjelp-innsyn-api-dev",
+    "sosialhjelp-soknad-api-dev"
   ],
   "gcpCluster": "dev-gcp",
   "hasInboundSbsApps": "true",
