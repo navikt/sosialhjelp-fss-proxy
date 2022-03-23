@@ -6,6 +6,7 @@
   "inboundRulesGcpApplications": [
     "sosialhjelp-innsyn-api-q",
     "sosialhjelp-innsyn-api-dev",
+    "sosialhjelp-soknad-api",
     "sosialhjelp-soknad-api-dev"
   ],
   "gcpCluster": "dev-gcp",
