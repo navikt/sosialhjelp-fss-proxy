@@ -1,23 +1,23 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Versions {
-    const val springboot = "2.6.4"
+    const val springboot = "2.6.6"
     const val kotlin = "1.6.10"
     const val coroutines = "1.6.0"
-    const val jackson = "2.13.1"
-    const val micrometer = "1.8.3"
+    const val jackson = "2.13.2"
+    const val micrometer = "1.8.4"
     const val javaJwt = "3.18.3"
     const val jwksRsa = "0.20.2"
     const val logstash = "7.0.1"
-    const val nimbusJoseJwt = "9.20"
+    const val nimbusJoseJwt = "9.21"
 
     // test
     const val junit = "5.8.2"
-    const val mockk = "1.12.2"
+    const val mockk = "1.12.3"
 }
 
 plugins {
-    id("org.springframework.boot") version "2.6.4"
+    id("org.springframework.boot") version "2.6.6"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
@@ -32,7 +32,7 @@ repositories {
 }
 
 ktlint {
-    this.version.set("0.43.2")
+    this.version.set("0.45.1")
 }
 
 dependencies {
