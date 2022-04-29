@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Versions {
-    const val springboot = "2.6.6"
+    const val springboot = "2.6.7"
     const val kotlin = "1.6.10"
     const val coroutines = "1.6.0"
     const val jackson = "2.13.2"
@@ -17,7 +17,7 @@ object Versions {
 }
 
 plugins {
-    id("org.springframework.boot") version "2.6.6"
+    id("org.springframework.boot") version "2.6.7"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
