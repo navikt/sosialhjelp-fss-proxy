@@ -2,14 +2,15 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Versions {
     const val springboot = "2.6.7"
-    const val kotlin = "1.6.10"
-    const val coroutines = "1.6.0"
+    const val kotlin = "1.6.21"
+    const val coroutines = "1.6.1"
     const val jackson = "2.13.2"
-    const val micrometer = "1.8.4"
+    const val jacksonDatabind = "2.13.2.2"
+    const val micrometer = "1.8.5"
     const val javaJwt = "3.18.3"
     const val jwksRsa = "0.20.2"
     const val logstash = "7.0.1"
-    const val nimbusJoseJwt = "9.21"
+    const val nimbusJoseJwt = "9.22"
 
     // test
     const val junit = "5.8.2"
@@ -18,8 +19,8 @@ object Versions {
 
 plugins {
     id("org.springframework.boot") version "2.6.7"
-    kotlin("jvm") version "1.6.10"
-    kotlin("plugin.spring") version "1.6.10"
+    kotlin("jvm") version "1.6.21"
+    kotlin("plugin.spring") version "1.6.21"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
@@ -32,7 +33,7 @@ repositories {
 }
 
 ktlint {
-    this.version.set("0.45.1")
+    this.version.set("0.45.2")
 }
 
 dependencies {
@@ -44,6 +45,7 @@ dependencies {
     implementation("io.micrometer:micrometer-registry-prometheus:${Versions.micrometer}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:${Versions.coroutines}")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${Versions.jackson}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${Versions.jacksonDatabind}")
     implementation("com.auth0:java-jwt:${Versions.javaJwt}")
     implementation("com.auth0:jwks-rsa:${Versions.jwksRsa}")
     implementation("com.nimbusds:nimbus-jose-jwt:${Versions.nimbusJoseJwt}")
