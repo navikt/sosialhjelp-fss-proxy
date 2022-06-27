@@ -1,9 +1,10 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Versions {
     const val springboot = "2.7.0"
-    const val kotlin = "1.6.21"
-    const val coroutines = "1.6.1"
+    const val coroutines = "1.6.3"
     const val jackson = "2.13.3"
     const val micrometer = "1.9.0"
     const val javaJwt = "3.19.2"
@@ -18,8 +19,8 @@ object Versions {
 
 plugins {
     id("org.springframework.boot") version "2.7.0"
-    kotlin("jvm") version "1.6.21"
-    kotlin("plugin.spring") version "1.6.21"
+    kotlin("jvm") version "1.7.0"
+    kotlin("plugin.spring") version "1.7.0"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
 
@@ -64,6 +65,13 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    testLogging {
+        events = setOf(TestLogEvent.SKIPPED, TestLogEvent.FAILED)
+        exceptionFormat = TestExceptionFormat.FULL
+        showCauses = true
+        showExceptions = true
+        showStackTraces = true
+    }
 }
 
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
