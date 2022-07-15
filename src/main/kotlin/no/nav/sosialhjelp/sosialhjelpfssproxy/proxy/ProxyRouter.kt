@@ -2,13 +2,10 @@ package no.nav.sosialhjelp.sosialhjelpfssproxy.proxy
 
 import no.nav.sosialhjelp.sosialhjelpfssproxy.aareg.AaregRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.configuration.FrontendErrorMessage
-import no.nav.sosialhjelp.sosialhjelpfssproxy.ereg.EregRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.ServiceException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangForbudtException
 import no.nav.sosialhjelp.sosialhjelpfssproxy.exceptions.TilgangsException
-import no.nav.sosialhjelp.sosialhjelpfssproxy.kodeverk.KodeverkRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.krr.KrrRouter
-import no.nav.sosialhjelp.sosialhjelpfssproxy.norg.NorgRouter
 import no.nav.sosialhjelp.sosialhjelpfssproxy.tilgang.TilgangskontrollService
 import no.nav.sosialhjelp.sosialhjelpfssproxy.utils.logger
 import org.springframework.http.HttpStatus
@@ -20,9 +17,6 @@ import org.springframework.web.reactive.function.server.coRouter
 @Component
 class ProxyRouter(
     private val tilgangskontrollService: TilgangskontrollService,
-    private val norgRouter: NorgRouter,
-    private val kodeverkRouter: KodeverkRouter,
-    private val eregRouter: EregRouter,
     private val krrRouter: KrrRouter,
     private val aaregRouter: AaregRouter,
 ) {
@@ -32,9 +26,6 @@ class ProxyRouter(
 
     fun proxyRoutes() = coRouter {
         path("/proxy").nest {
-            add(norgRouter.norgRoutes())
-            add(kodeverkRouter.kodeverkRoutes())
-            add(eregRouter.eregRoutes())
             add(krrRouter.krrRoutes())
             add(aaregRouter.aaregRoutes())
             filter { serverRequest, next ->
