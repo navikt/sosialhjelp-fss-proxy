@@ -3,14 +3,14 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Versions {
-    const val springboot = "2.7.0"
+    const val springboot = "2.7.1"
     const val coroutines = "1.6.3"
     const val jackson = "2.13.3"
-    const val micrometer = "1.9.0"
-    const val javaJwt = "3.19.2"
+    const val micrometer = "1.9.2"
+    const val javaJwt = "4.0.0"
     const val jwksRsa = "0.21.1"
     const val logstash = "7.2"
-    const val nimbusJoseJwt = "9.22"
+    const val nimbusJoseJwt = "9.23"
 
     // test
     const val junit = "5.8.2"
@@ -18,9 +18,9 @@ object Versions {
 }
 
 plugins {
-    id("org.springframework.boot") version "2.7.0"
-    kotlin("jvm") version "1.7.0"
-    kotlin("plugin.spring") version "1.7.0"
+    id("org.springframework.boot") version "2.7.1"
+    kotlin("jvm") version "1.7.10"
+    kotlin("plugin.spring") version "1.7.10"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
 
