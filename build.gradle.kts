@@ -22,6 +22,7 @@ plugins {
     kotlin("jvm") version "1.7.10"
     kotlin("plugin.spring") version "1.7.10"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
+    id("com.github.ben-manes.versions") version "0.42.0"
 }
 
 group = "no.nav.sosialhjelp"
@@ -76,4 +77,17 @@ tasks.withType<Test> {
 
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
     this.archiveFileName.set("app.jar")
+}
+
+fun String.isNonStable(): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { toUpperCase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(this)
+    return isStable.not()
+}
+
+tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
+    rejectVersionIf {
+        candidate.version.isNonStable() && !currentVersion.isNonStable()
+    }
 }
