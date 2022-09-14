@@ -19,8 +19,8 @@ spec:
     initialDelay: 20
     timeout: 60
   replicas:
-    min: {{minReplicas}}
-    max: {{maxReplicas}}
+    min: 2
+    max: 4
     cpuThresholdPercentage: 50
   prometheus:
     enabled: true
@@ -33,9 +33,8 @@ spec:
       cpu: 5m
       memory: 256Mi
   ingresses:
-  {{#each ingress}}
-     - "{{this}}"
-  {{/each}}
+     - "https://sosialhjelp-fss-proxy.intern.nav.no"
+     - "https://sosialhjelp-fss-proxy.prod-fss-pub.nais.io"
   azure:
     application:
       enabled: true
@@ -44,20 +43,16 @@ spec:
   accessPolicy:
     inbound:
       rules:
-      {{#each inboundRulesGcpApplications}}
-        - application: "{{this}}"
-          cluster: {{gcpCluster}}
-      {{else}}
-        []
-      {{/each}}
-      {{#if hasInboundSbsApps}}
-      {{#each inboundRulesSbsApplications}}
-        - application: "{{this}}"
-          cluster: {{sbsCluster}}
-      {{/each}}
-      {{/if}}
+        - application: sosialhjelp-soknad-api
+          cluster: prod-sbs
   env:
-  {{#each env}}
-    - name: {{@key}}
-      value: "{{this}}"
-  {{/each}}
+    - name: SPRING_PROFILES_ACTIVE
+      value: "log-kibana"
+    - name: KRR_URL
+      value: "https://digdir-krr-proxy.intern.nav.no"
+    - name: KRR_AUDIENCE
+      value: "prod-gcp:team-rocket:digdir-krr-proxy"
+    - name: AAREG_URL
+      value: "https://aareg-services.intern.nav.no/api"
+    - name: AAREG_AUDIENCE
+      value: "prod-fss:arbeidsforhold:aareg-services-nais"
