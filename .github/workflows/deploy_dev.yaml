@@ -9,7 +9,7 @@ jobs:
     env:
       IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Deploy app to dev
         uses: nais/deploy/actions/deploy@v1
         env:
