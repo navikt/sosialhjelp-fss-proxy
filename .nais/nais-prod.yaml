@@ -44,6 +44,7 @@ spec:
     inbound:
       rules:
         - application: sosialhjelp-soknad-api
+        - application: sosialhjelp-soknad-api
           cluster: prod-sbs
   env:
     - name: SPRING_PROFILES_ACTIVE

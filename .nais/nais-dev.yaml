@@ -46,8 +46,6 @@ spec:
         - application: sosialhjelp-soknad-api-dev
           cluster: dev-gcp
         - application: sosialhjelp-soknad-api
-          cluster: dev-sbs
-        - application: sosialhjelp-soknad-api
   env:
     - name: SPRING_PROFILES_ACTIVE
       value: "log-kibana"
