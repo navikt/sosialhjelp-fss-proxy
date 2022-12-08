@@ -1,3 +1,5 @@
+Dette repoet er arkivert, og appen er skrudd av ettersom den ikke trengs lengre.
+
 # sosialhjelp-fss-proxy
 Proxy-app for å nå tjenester on-prem fra GCP (med tokenX)
 
